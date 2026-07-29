@@ -16,42 +16,48 @@ function App() {
       tag: "easy",
       column: "progress",
     },
-    {
-      id: 3,
-      title: "running",
-      description: "run 100 meters",
-      tag: "Medium",
-      column: "done",
-    },
-    {
-      id: 4,
-      title: "fighting",
-      description: "do some sparring",
-      tag: "hard",
-      column: "done",
-    },
-    {
-      id: 5,
-      title: "fighting",
-      description: "do some sparring",
-      tag: "hard",
-      column: "todo",
-    },
-    {
-      id: 6,
-      title: "fighting",
-      description: "do some sparring",
-      tag: "hard",
-      column: "todo",
-    },
-    {
-      id: 8,
-      title: "fighting",
-      description: "do some sparring",
-      tag: "hard",
-      column: "todo",
-    },
+    // {
+    //   id: 3,
+    //   title: "running",
+    //   description: "run 100 meters",
+    //   tag: "Medium",
+    //   column: "done",
+    // },
+    // {
+    //   id: 4,
+    //   title: "fighting",
+    //   description: "do some sparring",
+    //   tag: "hard",
+    //   column: "done",
+    // },
+    // {
+    //   id: 5,
+    //   title: "fighting",
+    //   description: "do some sparring",
+    //   tag: "hard",
+    //   column: "todo",
+    // },
+    // {
+    //   id: 6,
+    //   title: "fighting",
+    //   description: "do some sparring",
+    //   tag: "hard",
+    //   column: "todo",
+    // },
+    // {
+    //   id: 8,
+    //   title: "fighting",
+    //   description: "do some sparring",
+    //   tag: "hard",
+    //   column: "todo",
+    // },
   ];
+
+  const filterTodosColumn = tasks.filter((task) => task.column === "todo");
+  const filterProgressColumn = tasks.filter(
+    (task) => task.column === "progress",
+  );
+  const filterDoneColumn = tasks.filter((task) => task.column === "done");
 
   return (
     <>
@@ -59,42 +65,39 @@ function App() {
       <main>
         <div className="columnDivs">
           <h2>Todo</h2>
-          {tasks
-            .filter((task) => task.column === "todo")
-            .map((item) => (
-              <TaskCard
-                key={item.id}
-                title={item.title}
-                description={item.description}
-                tag={item.tag}
-              />
-            ))}
+          {filterTodosColumn.length === 0 && <p>No tasks yet</p>}
+          {filterTodosColumn.map((item) => (
+            <TaskCard
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              tag={item.tag}
+            />
+          ))}
         </div>
         <div className="columnDivs">
           <h2>In Progress</h2>
-          {tasks
-            .filter((task) => task.column === "progress")
-            .map((item) => (
-              <TaskCard
-                key={item.id}
-                title={item.title}
-                description={item.description}
-                tag={item.tag}
-              />
-            ))}
+          {filterProgressColumn.length === 0 && <p>No tasks yet</p>}
+          {filterProgressColumn.map((item) => (
+            <TaskCard
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              tag={item.tag}
+            />
+          ))}
         </div>
         <div className="columnDivs">
           <h2>Done</h2>
-          {tasks
-            .filter((task) => task.column === "done")
-            .map((item) => (
-              <TaskCard
-                key={item.id}
-                title={item.title}
-                description={item.description}
-                tag={item.tag}
-              />
-            ))}
+          {filterDoneColumn.length === 0 && <p>No tasks yet</p>}
+          {filterDoneColumn.map((item) => (
+            <TaskCard
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              tag={item.tag}
+            />
+          ))}
         </div>
       </main>
     </>

@@ -1,7 +1,14 @@
 import TaskCard from "./components/TaskCard";
-
+import { useState } from "react";
+interface Task {
+  id: number;
+  title: string;
+  description: string;
+  tag: string;
+  column: string;
+}
 function App() {
-  const tasks = [
+  const [tasks, setTasks] = useState<Task[]>([
     {
       id: 1,
       title: "Clean Kitchen",
@@ -16,42 +23,42 @@ function App() {
       tag: "easy",
       column: "progress",
     },
-    // {
-    //   id: 3,
-    //   title: "running",
-    //   description: "run 100 meters",
-    //   tag: "Medium",
-    //   column: "done",
-    // },
-    // {
-    //   id: 4,
-    //   title: "fighting",
-    //   description: "do some sparring",
-    //   tag: "hard",
-    //   column: "done",
-    // },
-    // {
-    //   id: 5,
-    //   title: "fighting",
-    //   description: "do some sparring",
-    //   tag: "hard",
-    //   column: "todo",
-    // },
-    // {
-    //   id: 6,
-    //   title: "fighting",
-    //   description: "do some sparring",
-    //   tag: "hard",
-    //   column: "todo",
-    // },
-    // {
-    //   id: 8,
-    //   title: "fighting",
-    //   description: "do some sparring",
-    //   tag: "hard",
-    //   column: "todo",
-    // },
-  ];
+    {
+      id: 3,
+      title: "running",
+      description: "run 100 meters",
+      tag: "Medium",
+      column: "done",
+    },
+    {
+      id: 4,
+      title: "fighting",
+      description: "do some sparring",
+      tag: "hard",
+      column: "done",
+    },
+    {
+      id: 5,
+      title: "fighting",
+      description: "do some sparring",
+      tag: "hard",
+      column: "todo",
+    },
+    {
+      id: 6,
+      title: "fighting",
+      description: "do some sparring",
+      tag: "hard",
+      column: "todo",
+    },
+    {
+      id: 8,
+      title: "fighting",
+      description: "do some sparring",
+      tag: "hard",
+      column: "todo",
+    },
+  ]);
 
   const filterTodosColumn = tasks.filter((task) => task.column === "todo");
   const filterProgressColumn = tasks.filter(

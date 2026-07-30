@@ -8,6 +8,10 @@ interface Task {
   column: string;
 }
 function App() {
+  const [title, setTitle] = useState<string>("");
+  const [select, setSelect] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [tag, setTag] = useState<string>("");
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: 1,
@@ -52,7 +56,7 @@ function App() {
       column: "todo",
     },
     {
-      id: 8,
+      id: 7,
       title: "fighting",
       description: "do some sparring",
       tag: "hard",
@@ -66,9 +70,49 @@ function App() {
   );
   const filterDoneColumn = tasks.filter((task) => task.column === "done");
 
+  function addTask() {
+    const newTask = {
+      id: Date.now(),
+      title: title,
+      description: description,
+      tag: tag,
+      column: select,
+    };
+
+    setTasks([...tasks, newTask]);
+
+    setTitle("");
+    setDescription("");
+    setTag("");
+  }
   return (
     <>
       <h1>Kanban TaskBoard</h1>
+      <input
+        type="text"
+        placeholder="Enter your task"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Enter your description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+
+      <select value={select} onChange={(e)=> setTag(e.target.value)}>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      
+      <select value={select} onChange={(e) => setSelect(e.target.value)}>
+        <option value="todo">Todo</option>
+        <option value="progress">progress</option>
+        <option value="done">Done</option>
+      </select>
+      <button onClick={addTask}>Add task</button>
       <main>
         <div className="columnDivs">
           <h2>Todo</h2>

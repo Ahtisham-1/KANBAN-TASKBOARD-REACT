@@ -9,9 +9,9 @@ interface Task {
 }
 function App() {
   const [title, setTitle] = useState<string>("");
-  const [select, setSelect] = useState<string>("");
+  const [select, setSelect] = useState<string>("todo");
   const [description, setDescription] = useState<string>("");
-  const [tag, setTag] = useState<string>("");
+  const [tag, setTag] = useState<string>("easy");
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: 1,
@@ -85,6 +85,12 @@ function App() {
     setDescription("");
     setTag("");
   }
+
+  function deleteTask(id: number) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
+  
   return (
     <>
       <h1>Kanban TaskBoard</h1>
@@ -101,12 +107,12 @@ function App() {
         onChange={(e) => setDescription(e.target.value)}
       />
 
-      <select value={select} onChange={(e)=> setTag(e.target.value)}>
+      <select value={tag} onChange={(e) => setTag(e.target.value)}>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
-      
+
       <select value={select} onChange={(e) => setSelect(e.target.value)}>
         <option value="todo">Todo</option>
         <option value="progress">progress</option>
@@ -123,6 +129,8 @@ function App() {
               title={item.title}
               description={item.description}
               tag={item.tag}
+              id={item.id}
+              onDelete={deleteTask}
             />
           ))}
         </div>
@@ -135,6 +143,8 @@ function App() {
               title={item.title}
               description={item.description}
               tag={item.tag}
+              id={item.id}
+              onDelete={deleteTask}
             />
           ))}
         </div>
@@ -147,6 +157,8 @@ function App() {
               title={item.title}
               description={item.description}
               tag={item.tag}
+              id={item.id}
+              onDelete={deleteTask}
             />
           ))}
         </div>

@@ -90,23 +90,24 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
-  
   return (
     <>
       <h1>Kanban TaskBoard</h1>
-      <input
-        type="text"
-        placeholder="Enter your task"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Enter your description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
 
+      <div className="form-area">
+        <input
+          type="text"
+          placeholder="Enter your task"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Enter your description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
       <select value={tag} onChange={(e) => setTag(e.target.value)}>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>

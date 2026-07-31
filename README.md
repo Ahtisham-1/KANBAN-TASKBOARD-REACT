@@ -1,75 +1,42 @@
-# React + TypeScript + Vite
+# Kanban Taskboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully interactive Kanban board built with React, TypeScript, and Vite. This is the first project in my Phase 2 learning path — rebuilt from scratch in React after originally building it in vanilla JS.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 18** — component-based UI
+- **TypeScript** — typed props, interfaces, and state
+- **Vite** — dev server and build tool
+- **CSS** — custom styling, no framework
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add tasks with a title, description, tag, and column
+- Delete tasks instantly
+- Three columns: Todo, In Progress, Done
+- Empty state message per column when no tasks exist
+- Controlled form inputs — React owns all state
 
-## Expanding the ESLint configuration
+## How to Run Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/frogman01/kanban-taskboard-react
+cd kanban-taskboard
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## What I Learned Building This
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- JSX syntax and function components
+- Typed props with TypeScript interfaces
+- Rendering lists with `.map()` and stable `key` props
+- Conditional rendering with `&&`
+- `useState` for reactive data
+- Controlled inputs — `value` + `onChange`
+- Immutable state updates with spread operator
+- Passing functions as props for child → parent communication
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Part of
 
-```
+**FeeEase Kashmir** learning roadmap — Phase 2, Week 1 (July 2026)
